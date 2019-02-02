@@ -1,0 +1,20 @@
+server:
+  port: 7005
+
+wechat:
+  browser: #模拟浏览器请求时的配置
+    userAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36
+    acceptEncoding: gzip, deflate, br
+    acceptLanguage: en,zh-CN;q=0.8,zh;q=0.6,ja;q=0.4,zh-TW;q=0.2
+  url:
+    entry: https://wx.qq.com/
+    pathBase: /cgi-bin/mmwebwx-bin
+    loginBase: https://login.weixin.qq.com
+
+    uuid: ${wechat.url.loginBase}/jslogin?appid=wx782c26e4c19acffb&fun=new&lang=zh_CN&_=%s
+    qr: ${wechat.url.loginBase}/qrcode/%s
+    statReport: ${wechat.url.entry}${wechat.url.pathBase}/webwxstatreport?fun=new
+    login: ${wechat.url.loginBase}${wechat.url.pathBase}/login?loginicon=true&uuid=%s&tip=0&r=%s&_=%s
+
+  qr: #二维码相关配置
+    refreshTime: 0 #0代表永不过期

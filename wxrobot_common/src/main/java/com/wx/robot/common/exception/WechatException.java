@@ -1,11 +1,11 @@
 package com.wx.robot.common.exception;
 
-public class WechatException extends RuntimeException {
-    public WechatException() {
-    }
+import com.wx.robot.common.enums.WechatErrorEnums;
 
-    public WechatException(String message) {
-        super(message);
+public class WechatException extends RuntimeException {
+
+    public WechatException(WechatErrorEnums errorEnums) {
+        super(errorEnums.getMessage());
     }
 
     public WechatException(String message, Throwable cause) {
