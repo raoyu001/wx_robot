@@ -29,6 +29,9 @@ public class WechatReqProperties {
     @Value("${wechat.url.login}")
     String loginUrl;
 
+    @Value("${wechat.url.logout}")
+    String logoutUrl;
+
     @Value("${wechat.browser.userAgent}")
     String userAgent;
 

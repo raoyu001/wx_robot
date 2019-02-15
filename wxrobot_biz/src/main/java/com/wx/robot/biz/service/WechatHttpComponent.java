@@ -3,8 +3,8 @@ package com.wx.robot.biz.service;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.wx.robot.biz.config.StatefulRestTemplate;
 import com.wx.robot.biz.config.properties.WechatReqProperties;
-import com.wx.robot.common.entity.StatReport;
-import com.wx.robot.common.entity.Token;
+import com.wx.robot.common.entity.shared.StatReport;
+import com.wx.robot.common.entity.shared.Token;
 import com.wx.robot.common.entity.request.BaseRequest;
 import com.wx.robot.common.entity.request.StatReportRequest;
 import com.wx.robot.common.entity.response.LoginResp;
@@ -25,8 +25,11 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.Resource;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -219,6 +222,11 @@ public class WechatHttpComponent {
         this.refererValue = url;
     }
 
+    void logout(String hostUrl, String skey) throws IOException {
+        final String url = String.format(wechatReqProperties.getLogoutUrl(), hostUrl, escape(skey));
+        restTemplate.getForObject(url, String.class, new HttpEntity<>(postHeader));
+    }
+
 
     private void appendAdditionalCookies(CookieStore cookieStore, Map<String, String> cookies, String domain, String path, Date expireDate) {
         cookies.forEach((key, value) -> {
@@ -228,5 +236,9 @@ public class WechatHttpComponent {
             cookie.setExpiryDate(expireDate);
             cookieStore.addCookie(cookie);
         });
+    }
+
+    private String escape(String str) throws UnsupportedEncodingException {
+        return URLEncoder.encode(str, StandardCharsets.UTF_8.toString());
     }
 }

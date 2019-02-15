@@ -15,6 +15,7 @@ wechat:
     qr: ${wechat.url.loginBase}/qrcode/%s
     statReport: ${wechat.url.entry}${wechat.url.pathBase}/webwxstatreport?fun=new
     login: ${wechat.url.loginBase}${wechat.url.pathBase}/login?loginicon=true&uuid=%s&tip=0&r=%s&_=%s
+    logout: ${wechat.url.pathBase}/webwxlogout?redirect=1&type=1&skey=%s
 
   qr: #二维码相关配置
     refreshTime: 0 #0代表永不过期

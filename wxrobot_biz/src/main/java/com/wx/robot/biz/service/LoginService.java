@@ -3,7 +3,7 @@ package com.wx.robot.biz.service;
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Preconditions;
 import com.wx.robot.biz.config.properties.WechatReqProperties;
-import com.wx.robot.common.entity.Token;
+import com.wx.robot.common.entity.shared.Token;
 import com.wx.robot.common.entity.request.BaseRequest;
 import com.wx.robot.common.entity.response.LoginResp;
 import com.wx.robot.common.enums.LoginStatusEnums;

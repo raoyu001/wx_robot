@@ -1,6 +1,6 @@
 package com.wx.robot.common.entity.request;
 
-import com.wx.robot.common.entity.StatReport;
+import com.wx.robot.common.entity.shared.StatReport;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

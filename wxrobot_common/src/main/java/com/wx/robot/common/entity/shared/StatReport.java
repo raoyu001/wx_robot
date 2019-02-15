@@ -1,4 +1,4 @@
-package com.wx.robot.common.entity;
+package com.wx.robot.common.entity.shared;
 
 import lombok.Data;
 
